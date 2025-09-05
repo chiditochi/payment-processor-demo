@@ -2,7 +2,7 @@ namespace Cyberspace.Service.PaymentProcessors;
 
 using Cyberspace.Model;
 
-class Paystack : IPay
+public class Paystack : IPay
 {
     public string ProcessPayment(PaymentDto payload)
     {

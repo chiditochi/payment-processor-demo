@@ -3,7 +3,7 @@ namespace Cyberspace.Service.PaymentProcessors;
 using Cyberspace.Model;
 
 
-class Flutter : IPay
+public class Flutter : IPay
 {
     public string ProcessPayment(PaymentDto payload)
     {

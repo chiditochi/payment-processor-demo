@@ -2,7 +2,7 @@ namespace Cyberspace.Service.PaymentProcessors;
 
 using Cyberspace.Model;
 
-class ArcaPayment : IPay
+public class ArcaPayment : IPay
 {
     public string ProcessPayment(PaymentDto payload)
     {

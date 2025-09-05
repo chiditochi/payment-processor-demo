@@ -1,35 +1,43 @@
-
-
-using Microsoft.AspNetCore.Mvc;
-using Cyberspace.Service.Payment;
 using Cyberspace.Model;
-using System.ComponentModel.DataAnnotations;
+using Cyberspace.Model.Validators;
+using Cyberspace.Service.Payment;
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using Cyberspace.Model.Validators;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.OpenApi.Models;
 
-WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
-builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Cyberspace Payment API",
+        Version = "v1",
+        Description = "A simple payment processing API demo"
+    });
+});
 
+builder.Services.AddScoped<IPaymentService, PaymentService>();
 // Add FluentValidation and register a single validator.
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddScoped<IValidator<PaymentDto>, PaymentDtoValidator>();
 
 var app = builder.Build();
 
+app.UseSwagger();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Payment API v1");
+        c.RoutePrefix = string.Empty;
+    });
 }
-
-app.UseHttpsRedirection();
-
-
 
 app.MapPost("/pay", async (IValidator<PaymentDto> validator,[FromBody]PaymentDto payload, IPaymentService paymentService) =>
 {
