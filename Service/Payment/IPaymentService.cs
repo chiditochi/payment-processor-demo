@@ -1,4 +1,4 @@
-namespace Cyberspace.Service;
+namespace Cyberspace.Service.Payment;
 
 using Cyberspace.Model;
 

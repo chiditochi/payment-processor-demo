@@ -1,5 +1,5 @@
 
-namespace Cyberspace.Service;
+namespace Cyberspace.Service.PaymentProcessors;
 
 using Cyberspace.Model;
 

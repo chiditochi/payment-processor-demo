@@ -1,6 +1,7 @@
-namespace Cyberspace.Service;
+namespace Cyberspace.Service.Payment;
 
 using Cyberspace.Model;
+using Cyberspace.Service.PaymentProcessors;
 
 class PaymentService : IPaymentService
 {

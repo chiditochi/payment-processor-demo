@@ -3,7 +3,7 @@ POST http://localhost:5025/pay
 Content-Type: application/json
 
 {
-    "Pan": "11111111111111111",
+    "Pan": "1111111111111111",
     "Amount": 3000000,
     "Cvv": "1234",
     "Name": "Henry Ford",
