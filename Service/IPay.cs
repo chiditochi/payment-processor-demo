@@ -1,6 +1,7 @@
 
-namespace Service;
+namespace Cyberspace.Service;
 
+using Cyberspace.Model;
 
 interface IPay
 {

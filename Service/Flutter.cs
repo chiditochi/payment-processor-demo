@@ -1,12 +1,14 @@
-namespace Service;
+namespace Cyberspace.Service;
+
+using Cyberspace.Model;
 
 
 class Flutter : IPay
 {
     public string ProcessPayment(PaymentDto payload)
     {
-        // Implementation for processing payment via Paystack
-        string message = $"Payment of {payload.Amount} processed successfully via Flutter.";
+        // Implementation for processing payment via Flutter
+        string message = $"Payment of {payload.Amount} by {payload.Name} processed successfully via Flutter.";
         return message;
     }
 }
